@@ -1,0 +1,28 @@
+{
+  "name": "ipaymu-nodejs-api",
+  "version": "1.0.0",
+  "description": "Node.js package for iPaymu.com Indonesia payment gateway.",
+  "main": "index.js",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.ipaymu.com/plugin/ipaymu-nodejs-api"
+  },
+  "homepage": "https://ipaymu.com",
+  "keywords": [
+    "ipaymu-nodejs-api",
+    "ipaymu",
+    "indonesia",
+    "payment",
+    "gateway"
+  ],
+  "author": "support@ipaymu.com",
+  "license": "ISC"
+}
