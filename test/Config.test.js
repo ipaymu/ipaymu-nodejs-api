@@ -4,6 +4,14 @@ const expect = require("chai").expect;
 const Config = require("./../lib/Config");
 const cons = require("./sharedConstants");
 
+function generateConfig() {
+  return {
+    isProduction: false,
+    va: cons.va,
+    apiKey: cons.apiKey,
+  };
+}
+
 describe("Config.js", () => {
   it("able to start test", () => {
     expect(true).to.be.true;
@@ -36,11 +44,3 @@ describe("Config.js", () => {
     expect(configObj.getBaseUrl()).to.be.equal(cons.PRODUCTION_BASE_URL);
   });
 });
-
-function generateConfig() {
-  return {
-    isProduction: false,
-    va: cons.va,
-    apiKey: cons.apiKey
-  };
-}

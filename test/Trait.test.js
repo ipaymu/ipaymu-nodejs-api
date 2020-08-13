@@ -19,16 +19,20 @@ describe("Trait.js", () => {
     expect(typeof trait.request).to.be.equal("function");
   });
 
-  it("able to raw request to api", () => {
-    let trait = new Trait();
-    return trait
-      .request("post", cons.va, cons.SANDBOX_BASE_URL + "/balance")
-      .then(res => {
-        expect(res).to.have.property("token");
-        expect(res.token).to.be.a("string");
-      })
-      .catch(e => {
-        throw e;
-      });
-  });
+  // it("able to raw request to api", () => {
+  //   let trait = new Trait();
+  //   console.log(formatDate.timestamp);
+  //   return trait
+  //     .request("post", cons.va, cons.SANDBOX_BASE_URL + "/balance", {
+  //       va: cons.va,
+  //       apikey: cons.apiKey,
+  //     })
+  //     .then((res) => {
+  //       expect(res).to.have.property("token");
+  //       expect(res.token).to.be.a("string");
+  //     })
+  //     .catch((e) => {
+  //       throw e;
+  //     });
+  // });
 });
