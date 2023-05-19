@@ -28,7 +28,7 @@ export declare type TCart = {
 };
 declare class Ipaymu extends Curl {
     #private;
-    constructor(apiKey?: string | null, va?: string | null, prod?: boolean);
+    constructor(apiKey?: string | null, va?: string | null, prod?: boolean | null);
     set apiKey(apiKey: string);
     set va(va: string);
     set amount(amount: string);
@@ -37,9 +37,11 @@ declare class Ipaymu extends Curl {
     set buyer(buyer: TBuyer);
     set cod(cod: TCod);
     set comments(comments: string);
+    set prod(prod: boolean | false);
     set cart(cart: TCart);
     historyTransaction(data: any): Promise<any>;
     checkBalance(): Promise<any>;
+    checkPaymentMethods(): Promise<any>;
     checkTransaction(id: string | number): Promise<any>;
     redirectPayment(paymentData?: any): Promise<any>;
     directPayment(data?: any): Promise<any>;

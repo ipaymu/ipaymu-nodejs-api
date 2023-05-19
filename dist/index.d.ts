@@ -1,5 +1,8 @@
 import { TBuyer, TCart, TCod, TUrl } from "./ipaymu";
 declare function setVa(va?: string): void;
+declare function getIsProd(): void;
+declare function getProd(): void;
+declare function setProd(prod?: boolean): void;
 declare function setApiKey(apiKey?: string): void;
 declare function setURL(url: TUrl): void;
 declare function setBuyer(buyer: TBuyer): void;
@@ -9,9 +12,10 @@ declare function setComments(comments: string): void;
 declare function addCart(cart: TCart): void;
 declare function historyTransaction(data: any): Promise<any>;
 declare function checkBalance(): Promise<any>;
+declare function checkPaymentMethods(): Promise<any>;
 declare function checkTransaction(id: string | number): Promise<any>;
 declare function redirectPayment(paymentData?: any): Promise<any>;
 declare function directPayment(data?: any): Promise<any>;
 declare function FAIL(msg: string): void;
-export { setVa, setApiKey, setURL, setBuyer, setCOD, setAmount, setComments, addCart, historyTransaction, checkBalance, checkTransaction, redirectPayment, directPayment, FAIL };
+export { setVa, getProd, setProd, setApiKey, setURL, setBuyer, setCOD, setAmount, setComments, addCart, historyTransaction, checkBalance, checkTransaction, redirectPayment, directPayment, checkPaymentMethods , FAIL };
 //# sourceMappingURL=index.d.ts.map

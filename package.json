@@ -6,7 +6,8 @@
 	"types": "./dist",
 	"scripts": {
 		"build": "tsc",
-		"watch": "tsc --watch"
+		"watch": "tsc --watch",
+		"test": "mocha"
 	},
 	"keywords": [],
 	"author": "",
@@ -20,6 +21,9 @@
 	"dependencies": {
 		"axios": "^0.27.2",
 		"source-map-loader": "^3.0.1",
-		"ts-loader": "^9.3.0"
+		"ts-loader": "^9.3.0",
+		"chai": "^4.2.0",
+		"mocha": "^5.2.0",
+		"should": "0.3.x"
 	}
 }

@@ -40,6 +40,7 @@ type TCredential = {
 class Ipaymu extends Curl {
 	#apiKey?: string | null;
 	#va?: string | null;
+	#isProd?: boolean | false;
 	#config: Config;
 	#credentials: TCredential;
 	#amount?: string;
@@ -72,6 +73,10 @@ class Ipaymu extends Curl {
 			va: this.#va,
 			apiKey: apiKey,
 		};
+	}
+
+	set isProd(isProd: boolean) {
+		this.#isProd = isProd;
 	}
 
 	set va(va: string) {

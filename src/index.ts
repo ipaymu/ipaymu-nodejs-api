@@ -2,6 +2,9 @@ import Ipaymu, { TBuyer, TCart, TCod, TUrl } from "./ipaymu";
 
 const ipaymu = new Ipaymu();
 
+function setIsProd(prod?: boolean) {
+	ipaymu.isProd = prod;
+}
 function setVa(va?: string) {
 	ipaymu.va = va;
 }
@@ -58,4 +61,4 @@ function FAIL(msg: string) {
 	throw new Error(msg);
 }
 
-export { setVa, setApiKey, setURL, setBuyer, setCOD, setAmount, setComments, addCart, historyTransaction, checkBalance, checkTransaction, redirectPayment, directPayment, FAIL };
+export { setVa, setIsProd, setApiKey, setURL, setBuyer, setCOD, setAmount, setComments, addCart, historyTransaction, checkBalance, checkTransaction, redirectPayment, directPayment, FAIL };

@@ -1,11 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const ipaymu =  require("./ipaymu");
+
 class Config {
     constructor(prod) {
-        let base = "https://sandbox.ipaymu.com/api/v2";
-        if (prod) {
-            base = "https://my.ipaymu.com/api/v2";
+         let base = "https://sandbox.ipaymu.com/api/v2";
+         if (prod) {
+           base = "https://my.ipaymu.com/api/v2";
         }
+
         /**
          * General API
          **/
@@ -13,6 +16,7 @@ class Config {
         this.transaction = base + "/transaction";
         this.history = base + "/history";
         this.banklist = base + "/banklist";
+        this.paymentMethod = base + "/payment-method-list";
         /**
          * Payment API
          **/

@@ -10,10 +10,12 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Ipaymu_instances, _Ipaymu_apiKey, _Ipaymu_va, _Ipaymu_config, _Ipaymu_credentials, _Ipaymu_amount, _Ipaymu_expired, _Ipaymu_ureturn, _Ipaymu_ucancel, _Ipaymu_unotify, _Ipaymu_buyer, _Ipaymu_cod, _Ipaymu_comments, _Ipaymu_cart, _Ipaymu_buildCarts;
+var _Ipaymu_instances, _Ipaymu_apiKey, _Ipaymu_va, _Ipaymu_config, _Ipaymu_credentials, _Ipaymu_amount, _Ipaymu_expired, _Ipaymu_ureturn, _Ipaymu_ucancel, _Ipaymu_unotify, _Ipaymu_buyer, _Ipaymu_cod, _Ipaymu_comments, _Ipaymu_cart, _Ipaymu_buildCarts, _Ipaymu_Prod;
 Object.defineProperty(exports, "__esModule", { value: true });
 const curl_1 = require("./curl");
 const config_1 = require("./config");
+const ipaymu =  require("./ipaymu");
+
 class Ipaymu extends curl_1.default {
     constructor(apiKey, va, prod) {
         super();
@@ -31,7 +33,9 @@ class Ipaymu extends curl_1.default {
         _Ipaymu_cod.set(this, void 0);
         _Ipaymu_comments.set(this, void 0);
         _Ipaymu_cart.set(this, void 0);
+        _Ipaymu_Prod.set(this , void 0);
         __classPrivateFieldSet(this, _Ipaymu_apiKey, apiKey, "f");
+        __classPrivateFieldSet(this, _Ipaymu_Prod, va, "f");
         __classPrivateFieldSet(this, _Ipaymu_va, va, "f");
         __classPrivateFieldSet(this, _Ipaymu_config, new config_1.default(prod || false), "f");
         __classPrivateFieldSet(this, _Ipaymu_credentials, {
@@ -59,6 +63,9 @@ class Ipaymu extends curl_1.default {
     set expired(expired) {
         __classPrivateFieldSet(this, _Ipaymu_expired, expired, "f");
     }
+    set prod(prod) {
+        __classPrivateFieldSet(this, _Ipaymu_Prod, prod, "f");
+    }
     set url(url) {
         __classPrivateFieldSet(this, _Ipaymu_ureturn, url.ureturn, "f");
         __classPrivateFieldSet(this, _Ipaymu_ucancel, url.ucancel, "f");
@@ -76,13 +83,43 @@ class Ipaymu extends curl_1.default {
     set cart(cart) {
         __classPrivateFieldSet(this, _Ipaymu_cart, cart, "f");
     }
+    // set isProd(prod) {
+    //     __classPrivateFieldSet(this, _Ipaymu_cart, prod, "f");
+    // }
+    // get isProd(){
+    //     return prod;
+    // }
     async historyTransaction(data) {
-        return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").history, data, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
+        // return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").history, data, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
+        return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").history, {
+            id : data.id , 
+            status : data.status , 
+            date : data.date , 
+            startdate : data.startdate,
+            enddate : data.enddate,
+            page : data.page,
+            type : data.type,
+            orderBy : data.orderBy,
+            order : data.order, 
+            lang : data.lang, 
+            limit : data.limit,
+            bulkId : data.bulkId, 
+            account : data.account, 
+            lockStatus : data.lockStatus,
+        }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
     }
     async checkBalance() {
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").balance, {
             account: __classPrivateFieldGet(this, _Ipaymu_va, "f"),
         }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
+    }
+    async checkPaymentMethods() {
+        return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").paymentMethod, {
+            va: __classPrivateFieldGet(this, _Ipaymu_va, "f"),
+        }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
+    }
+    getProd() {
+        return __classPrivateFieldGet(this, _Ipaymu_Prod, "f");
     }
     async checkTransaction(id) {
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").transaction, {
@@ -113,6 +150,7 @@ class Ipaymu extends curl_1.default {
         }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
     }
     async directPayment(data) {
+        __classPrivateFieldSet(this, _Ipaymu_config, new config_1.default(__classPrivateFieldGet(this, _Ipaymu_Prod, "f")), "f");
         const cart = __classPrivateFieldGet(this, _Ipaymu_instances, "m", _Ipaymu_buildCarts).call(this);
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").directpayment, {
             account: __classPrivateFieldGet(this, _Ipaymu_va, "f"),
@@ -141,7 +179,7 @@ class Ipaymu extends curl_1.default {
         }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
     }
 }
-_Ipaymu_apiKey = new WeakMap(), _Ipaymu_va = new WeakMap(), _Ipaymu_config = new WeakMap(), _Ipaymu_credentials = new WeakMap(), _Ipaymu_amount = new WeakMap(), _Ipaymu_expired = new WeakMap(), _Ipaymu_ureturn = new WeakMap(), _Ipaymu_ucancel = new WeakMap(), _Ipaymu_unotify = new WeakMap(), _Ipaymu_buyer = new WeakMap(), _Ipaymu_cod = new WeakMap(), _Ipaymu_comments = new WeakMap(), _Ipaymu_cart = new WeakMap(), _Ipaymu_instances = new WeakSet(), _Ipaymu_buildCarts = function _Ipaymu_buildCarts() {
+_Ipaymu_apiKey = new WeakMap(), _Ipaymu_va = new WeakMap(), _Ipaymu_config = new WeakMap(), _Ipaymu_credentials = new WeakMap(), _Ipaymu_amount = new WeakMap(), _Ipaymu_expired = new WeakMap(), _Ipaymu_ureturn = new WeakMap(), _Ipaymu_ucancel = new WeakMap(), _Ipaymu_unotify = new WeakMap(), _Ipaymu_buyer = new WeakMap(), _Ipaymu_cod = new WeakMap(), _Ipaymu_comments = new WeakMap(), _Ipaymu_cart = new WeakMap(), _Ipaymu_instances = new WeakSet(), _Ipaymu_Prod = new WeakMap(), _Ipaymu_buildCarts = function _Ipaymu_buildCarts(){
     let dimension = [];
     if (__classPrivateFieldGet(this, _Ipaymu_cart, "f").hasOwnProperty("product")) {
         __classPrivateFieldGet(this, _Ipaymu_cart, "f").product = __classPrivateFieldGet(this, _Ipaymu_cart, "f").product.map((item) => item.trim());

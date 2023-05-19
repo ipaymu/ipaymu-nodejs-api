@@ -1,16 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FAIL = exports.directPayment = exports.redirectPayment = exports.checkTransaction = exports.checkBalance = exports.historyTransaction = exports.addCart = exports.setComments = exports.setAmount = exports.setCOD = exports.setBuyer = exports.setURL = exports.setApiKey = exports.setVa = void 0;
+exports.FAIL = exports.directPayment = exports.checkPaymentMethods = exports.getProd = exports.redirectPayment = exports.checkTransaction = exports.checkBalance = exports.historyTransaction = exports.addCart = exports.setComments = exports.setAmount = exports.setCOD = exports.setBuyer = exports.setURL = exports.setApiKey = exports.setProd = exports.setVa = void 0;
 const ipaymu_1 = require("./ipaymu");
 const ipaymu = new ipaymu_1.default();
+
+
 function setVa(va) {
     ipaymu.va = va;
 }
 exports.setVa = setVa;
+
+function setProd(prod) {
+    ipaymu.prod = prod;
+}
+exports.setProd = setProd;
+
+function getProd() {
+    return ipaymu.getProd();
+}
+exports.getProd = getProd;
+
 function setApiKey(apiKey) {
     ipaymu.apiKey = apiKey;
 }
 exports.setApiKey = setApiKey;
+
 function setURL(url) {
     ipaymu.url = url;
 }
@@ -45,6 +59,10 @@ function checkBalance() {
 exports.checkBalance = checkBalance;
 function checkTransaction(id) {
     return ipaymu.checkTransaction(id);
+}
+exports.checkPaymentMethods = checkPaymentMethods;
+function checkPaymentMethods() {
+    return ipaymu.checkPaymentMethods();
 }
 exports.checkTransaction = checkTransaction;
 function redirectPayment(paymentData) {
