@@ -76,4 +76,3 @@ ipaymu
   .catch((err) => console.log(err));
 ```
 
-See the [package source](https://github.com/gusmang/ipaymu-plugins-node/blob/main) for more details.
