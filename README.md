@@ -1,4 +1,4 @@
-# ipaymu Plugins Node .js V.1.0.3
+# ipaymu Plugins Node .js V.1.0.0
 
 The [ipaymu](https://ipaymu.com/) library exported as [Node.js](https://nodejs.org/) modules.
 
@@ -11,6 +11,25 @@ $ npm i -g npm
 $ npm i --save gusmang-ipaymu-node
 ```
 
+Import iPaymu Package First:
+
+```js
+import * as ipaymu from "ipaymu";
+```
+
+Then , add the credentials ( Va & apiKey):
+
+```js
+ipaymu.setVa("1179000899");
+ipaymu.setApiKey("QbGcoO0Qds9sQFDmY0MWg1Tq.xtuh1");
+```
+
+Set mode production true or false:
+
+```js
+ipaymu.setProd(false);
+```
+
 Direct Payment Example:
 
 ```js
@@ -19,6 +38,7 @@ import * as ipaymu from "gusmang-ipaymu-node";
 // set iPaymuVA & ApiKey.
 ipaymu.setVa("1179000899");
 ipaymu.setApiKey("QbGcoO0Qds9sQFDmY0MWg1Tq.xtuh1");
+ipaymu.setProd(false); // false if staging , true if production
 // set cart Items
 let carts = {
   product: ["product 1 ", "product2"],
