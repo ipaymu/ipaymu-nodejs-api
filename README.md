@@ -1,6 +1,6 @@
-# ipaymu Plugins Node .js V.1.0.0
+<img width="100" src="https://my.ipaymu.com/asset/images/logo-ipaymu.png">
 
-The [ipaymu](https://ipaymu.com/) library exported as [Node.js](https://nodejs.org/) modules.
+# The Official [iPaymu](https://ipaymu.com/) library exported as [Node.js](https://nodejs.org/) modules.
 
 ## Installation
 
@@ -8,13 +8,13 @@ Using npm:
 
 ```shell
 $ npm i -g npm
-$ npm i --save gusmang-ipaymu-node
+$ npm i --save ipaymu-nodejs-api
 ```
 
 Import iPaymu Package First:
 
 ```js
-import * as ipaymu from "ipaymu";
+import * as ipaymu from "ipaymu-nodejs-api";
 ```
 
 Then , add the credentials ( Va & apiKey):
@@ -34,7 +34,7 @@ Direct Payment Example:
 
 ```js
 // Load the ipaymu module.
-import * as ipaymu from "gusmang-ipaymu-node";
+import * as ipaymu from "ipaymu-nodejs-api";
 // set iPaymuVA & ApiKey.
 ipaymu.setVa("1179000899");
 ipaymu.setApiKey("QbGcoO0Qds9sQFDmY0MWg1Tq.xtuh1");
