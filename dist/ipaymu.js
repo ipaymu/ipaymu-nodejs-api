@@ -91,6 +91,7 @@ class Ipaymu extends curl_1.default {
     // }
     async historyTransaction(data) {
         // return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").history, data, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
+        __classPrivateFieldSet(this, _Ipaymu_config, new config_1.default(__classPrivateFieldGet(this, _Ipaymu_Prod, "f")), "f");
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").history, {
             id : data.id , 
             status : data.status , 
@@ -109,11 +110,13 @@ class Ipaymu extends curl_1.default {
         }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
     }
     async checkBalance() {
+        __classPrivateFieldSet(this, _Ipaymu_config, new config_1.default(__classPrivateFieldGet(this, _Ipaymu_Prod, "f")), "f");
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").balance, {
             account: __classPrivateFieldGet(this, _Ipaymu_va, "f"),
         }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
     }
     async checkPaymentMethods() {
+        __classPrivateFieldSet(this, _Ipaymu_config, new config_1.default(__classPrivateFieldGet(this, _Ipaymu_Prod, "f")), "f");
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").paymentMethod, {
             va: __classPrivateFieldGet(this, _Ipaymu_va, "f"),
         }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
@@ -122,11 +125,13 @@ class Ipaymu extends curl_1.default {
         return __classPrivateFieldGet(this, _Ipaymu_Prod, "f");
     }
     async checkTransaction(id) {
+        __classPrivateFieldSet(this, _Ipaymu_config, new config_1.default(__classPrivateFieldGet(this, _Ipaymu_Prod, "f")), "f");
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").transaction, {
             transactionId: id,
         }, __classPrivateFieldGet(this, _Ipaymu_credentials, "f"));
     }
     async redirectPayment(data) {
+        __classPrivateFieldSet(this, _Ipaymu_config, new config_1.default(__classPrivateFieldGet(this, _Ipaymu_Prod, "f")), "f");
         const cart = __classPrivateFieldGet(this, _Ipaymu_instances, "m", _Ipaymu_buildCarts).call(this);
         return await this.request(__classPrivateFieldGet(this, _Ipaymu_config, "f").redirectpayment, {
             account: __classPrivateFieldGet(this, _Ipaymu_va, "f"),
