@@ -1,5 +1,5 @@
 {
-	"name": "ipaymu-nodejs-api",
+	"name": "@ipaymu/ipaymu-nodejs-api",
 	"version": "1.0.1",
 	"description": "Node.js package for iPaymu.com Indonesia payment gateway.",
 	"main": "./dist",
